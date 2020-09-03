@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-double average(int *p,int n)
+double average(int *p,int n)	// <--- Function
 {
 	double sum=0, av;
 	for (int i = 0; i < n; i++)
@@ -11,12 +11,12 @@ double average(int *p,int n)
 	}
 	av = sum / n;
 	return av;
-}
-void bubblesort(int *p,int n)
+}			
+void bubblesort(int *p,int n)		
 {	
-	for (int i = 0; i < n - 1; i++)
+	for (int i = 0; i < n - 1; i++)				// <--- Nested Loop
 	{
-		for (int j = 0; j < n - 1 - i;j++)
+		for (int j = 0; j < n - 1 - i;j++)	
 		{
 			if (*(p + j) > * (p + j + 1))
 			{
@@ -40,26 +40,26 @@ double sd(int *p,double x,int n)
 int main()
 {
 	int n;
-	int* age;
+	int* info;			//Pointer
 	scanf("%d", &n);
-	if (n < 0 || n>50)
+	if (n < 2 || n>100)					//Expression and or
 	{
 		printf("Error");
 		return 0;
 	}
-	age = (int*)malloc(n * sizeof(int));
+	info = (int*)malloc(n * sizeof(int));
 	for (int i = 0; i < n; i++)
 	{
-		scanf("%d",age+i);
-		if (*(age + i) < 0 || *(age+i) >120)
+		scanf("%d",info+i);
+		if (*(info + i) < 0 || *(info+i) >5000)    //Expression and or
 		{
 			printf("Error");
 			return 0;
 		}
 	}
-	bubblesort(age,n);
-	printf("Average : %.2lf\n", average(age, n));
-	printf("Range : %d\n", abs(*(age + (n - 1)) - *(age + 0)));
-	printf("SD : %.2lf", sd(age, average(age, n),n));
+	bubblesort(info,n);
+	printf("Average : %.2lf\n", average(info, n));
+	printf("Range : %d\n", abs(*(info + (n - 1)) - *(info + 0)));
+	printf("SD : %.2lf", sd(info, average(info, n),n));
 	return 0;
 }
